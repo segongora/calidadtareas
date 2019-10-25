@@ -12,16 +12,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class FBLogin {
+public class FacebookTest {
 
 	private WebDriver driver;
 	private String url;
 
 	@Before
 	public void beforeTest() {
-		url = "https://www.facebook.com/";
+		url = "https://www.facebook.com/login";
 		System.setProperty("webdriver.chrome.driver", "/Users/segongora/chromedriver");
 		driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
 	}
@@ -31,7 +32,7 @@ public class FBLogin {
 		driver.close();
 	}
 
-	//@Test
+	/*@Test
 	public void testLogin() {
 		driver.get(url);
 		
@@ -39,7 +40,7 @@ public class FBLogin {
 		elementUser.sendKeys("segongora9@gmail.com");
 		
 		WebElement elementPass = driver.findElement(By.id("pass"));
-		elementPass.sendKeys("");
+		elementPass.sendKeys("*****");
 		elementPass.submit();
 		
 		WebElement elementSuccess = driver.findElement(By.className("linkWrap"));
@@ -48,8 +49,7 @@ public class FBLogin {
 		assertEquals("Sergio Gongora", success);
 		System.out.print("¡Exito! Ha logrado iniciar sesión en Facebook:\n" + success);
 		
-	}
-
+	}*/
 	
 	@Test
 	public void testLoginDenied() {
@@ -59,15 +59,12 @@ public class FBLogin {
 		elementUser.sendKeys("segongora9@gmail.com");
 		
 		WebElement elementPass = driver.findElement(By.id("pass"));
-		elementPass.sendKeys("Hola1234");
+		elementPass.sendKeys("Password1234");
 		elementPass.submit();
 		
-		WebElement elementDenied = driver.findElement(By.className("_2phz"));
-		
+		WebElement elementDenied = driver.findElement(By.xpath("//*[@id=\"globalContainer\"]/div[3]/div/div/div"));
 		String denied = elementDenied.getText();
-		assertEquals("Iniciar sesión como Sergio Gongora", denied);
+		assertEquals("La contraseña que ingresaste es incorrecta. ¿Olvidaste tu contraseña?", denied);
 		System.out.print("¡Incorrecto! La contraseña ingresada es incorrecta:\n" + denied);
-		
 	}
-
 }

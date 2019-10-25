@@ -2,7 +2,6 @@ package com.mayab.calidad.funcionales;
 
 import static org.junit.Assert.*;
 
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -13,9 +12,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.dbunit.Assertion.*;
 
-public class LoginTest {
+public class LoginTestBlackboard {
 	
 	private WebDriver driver;
 	private String url;
