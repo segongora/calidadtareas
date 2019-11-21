@@ -45,7 +45,7 @@ public class Parcial2 {
 	}
 
 	// Test para agregar CORRECTAMENTE un usuario.
-	//@Test
+	@Test
 	public void testAggregate() {
 		
 		// Iniciar driver con URL dada.
@@ -94,7 +94,7 @@ public class Parcial2 {
 	}
 	
 	// Test para agregar INCORRECTAMENTE un usuario.
-	//@Test
+	@Test
 	public void testAggregateFail() {
 		
 		// Iniciar driver con URL dada.
@@ -136,14 +136,14 @@ public class Parcial2 {
 		
 		// Comprobamos el error de registro.
 		assertEquals("Email must be valid.", incorrecto);
-		System.out.print(incorrecto + "\nPrueba pasada correctamente");
+		System.out.print(incorrecto + "\nUsuario NO agregado correctamente.");
 		
 		// Al finalizar no se creara un usuario porque dimos email y edad invalidos.
 		
 	}
 	
 	// Test para editar CORRECTAMENTE un usuario.
-	//@Test
+	@Test
 	public void testEdit() {
 		
 		// Funcion para siempre tener un usuario, y no tener error en las pruebas de Edit, Delete
@@ -205,7 +205,7 @@ public class Parcial2 {
 	}
 	
 	// Test para editar INCORRECTAMENTE un usuario.
-	//@Test
+	@Test
 	public void testEditFail() {
 		// Funcion para siempre tener un usuario, y no tener error en las pruebas de Edit, Delete
 		fallbackUser();
@@ -259,7 +259,7 @@ public class Parcial2 {
 		
 		// Comprobemos que fue exitoso la actualizacion erronea.
 		assertEquals("Email must be valid.", incorrect);
-		
+		System.out.print("Usuario NO actualizado correctamente.");
 		// Al finalizar el usuario NO se vera editado, porque le hemos dado un email y una edad invalida.
 	}
 	
@@ -319,7 +319,7 @@ public class Parcial2 {
 	}
 	
 	// Test para borrar INCORRECTAMENTE a un usuario.
-	//@Test
+	@Test
 	public void testDeleteFail() {
 		
 		// Funcion para siempre tener un usuario, y no tener error en las pruebas de Edit, Delete
@@ -382,11 +382,11 @@ public class Parcial2 {
 		
 		// Elemento de input Name.
 		WebElement elementNameInput = driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[1]/div/input"));
-		elementNameInput.sendKeys("Elon Musk");
+		elementNameInput.sendKeys("Elon Musk Fallback");
 		
 		// Elemento de input Email.
 		WebElement elementEmailInput = driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[2]/div/input"));
-		elementEmailInput.sendKeys("elon@musk.com");
+		elementEmailInput.sendKeys("elon-fallback@musk.com");
 		
 		// Elemento de input Age (solo acepta numeros).
 		WebElement elementAge = driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[3]/div[1]/div/input"));
