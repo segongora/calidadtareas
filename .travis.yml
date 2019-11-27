@@ -1,0 +1,10 @@
+language: java
+jdk: oraclejdk13
+services:
+- xvfb
+
+before_install:
+  - "export DISPLAY=:99.0"  
+  - sleep 3
+  
+script: "mvn verify"
